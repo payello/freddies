@@ -36,7 +36,7 @@
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="navbar">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
@@ -51,11 +51,9 @@
                         @else
                             <li><a href="{{route('posts.create')}}">Create a new Post</a></li>
 
-                            <li class="dropdown">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu">
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -67,8 +65,6 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                </ul>
-                            </li>
                         @endguest
                     </ul>
                 </div>
@@ -80,5 +76,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset("https://code.jquery.com/jquery-3.2.1.slim.min.js")}}"></script>
+    <script src="{{asset("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")}}"></script>
+    <script src="{{asset("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js")}}"></script>
+
 </body>
 </html>

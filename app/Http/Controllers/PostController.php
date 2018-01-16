@@ -26,10 +26,12 @@ class PostController extends Controller
 //comment on their own blog post.
 
 
-public function __construct()
-{
-    $this->middleware('auth')->except(['index', 'show']);
-}
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
+
 
     //show all the blog posts on page
     public function index()
@@ -65,15 +67,11 @@ public function __construct()
     {
         return view ('posts.show', compact('post'));
     }
-    public function edit(User $user, Post $post)
+    public function edit($id)
     {
         $post = Post::find($id);
 
-        if($user->id === $post->user_id) {
-            return true
-        }
-
-        return view('posts.edit', compact('post'));
+        return view('posts.edit', compact('post', 'id'));
     }
 
     public function update(Request $request, $id)
@@ -81,7 +79,7 @@ public function __construct()
         $post = Post::find($id);
 
         $post->title = $request->input('title');
-        $post->content = $request->input('body');
+        $post->content = $request->input('content');
 
         $post->user_id = auth()->id();
 
@@ -95,6 +93,8 @@ public function __construct()
         $post = Post::find($id);
 
         $post->delete();
+
+        return redirect('posts')->with('success', 'Your Post has been deleted');
     }
 
 }
