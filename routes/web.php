@@ -11,6 +11,7 @@
 |
 */
 
+<<<<<<< HEAD
 
 Route::get('/', 'PostController@index')->name('home');
 
@@ -19,3 +20,12 @@ Auth::routes();
 Route::resource('posts', 'PostController');
 
 Route::post('posts/{post}/comments', 'CommentController@store');
+=======
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> 2b52e94... Freddie's flowers initial commit

@@ -26,6 +26,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+<<<<<<< HEAD
 
     public function posts()
     {
@@ -36,4 +37,6 @@ class User extends Authenticatable
     {
         $this->posts()->save($post);
     }
+=======
+>>>>>>> 2b52e94... Freddie's flowers initial commit
 }
