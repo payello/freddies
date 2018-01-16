@@ -26,15 +26,75 @@ class PostController extends Controller
 //comment on their own blog post.
 
 
+public function __construct()
+{
+    $this->middleware('auth')->except(['index', 'show']);
+}
 
-
-    //show the blog posts
-
-
+    //show all the blog posts on page
     public function index()
     {
         $posts = Post::all();
         return view('posts.index', compact('posts'));
+    }
+    // create new posts
+    public function create()
+    {
+        return view('posts.create');
+    }
+    // storing new posts to database
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+           'title'=> 'required',
+            'content'=>'required'
+        ]);
+
+        $post = Post::create([
+           'title'=>request('title'),
+            'content'=>request('content'),
+            'user_id' => auth()->id(),
+        ]);
+
+        $post->save();
+
+        return redirect()->route('posts.show', $post->id);
+    }
+
+    public function show(Post $post)
+    {
+        return view ('posts.show', compact('post'));
+    }
+    public function edit(User $user, Post $post)
+    {
+        $post = Post::find($id);
+
+        if($user->id === $post->user_id) {
+            return true
+        }
+
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $post = Post::find($id);
+
+        $post->title = $request->input('title');
+        $post->content = $request->input('body');
+
+        $post->user_id = auth()->id();
+
+        $post->save();
+
+        return redirect()->route('posts.show', $post->id);
+    }
+
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+
+        $post->delete();
     }
 
 }

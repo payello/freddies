@@ -7,6 +7,11 @@
                 @foreach($posts as $post)
                     @include('posts.post')
                 @endforeach
+                @if (Auth::isModerator()){
+                    <button class="btn-warning" ></button>
+                    }
+
+
             </div>
         </div>
     </div>
