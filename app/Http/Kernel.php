@@ -56,10 +56,7 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-<<<<<<< HEAD
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class
-=======
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
->>>>>>> 2b52e94... Freddie's flowers initial commit
+
     ];
 }

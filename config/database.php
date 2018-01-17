@@ -42,11 +42,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
-<<<<<<< HEAD
             'port' => env('DB_PORT', '33060'),
-=======
-            'port' => env('DB_PORT', '3306'),
->>>>>>> 2b52e94... Freddie's flowers initial commit
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),

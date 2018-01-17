@@ -7,9 +7,7 @@
                 @foreach($posts as $post)
                     @include('posts.post')
 
-                @if(Auth::check())
-
-
+                @if(Auth::id() == $post->user_id)
                         <a href="{{"/posts/".$post->id."/edit"}}" class="btn-danger">Edit Post</a>
                         <form action="{{action('PostController@destroy', $post['id']) }}" method="post">
                             {{csrf_field()}}
@@ -18,8 +16,6 @@
                         </form>
                     @endif
                 @endforeach
-
-
             </div>
         </div>
     </div>

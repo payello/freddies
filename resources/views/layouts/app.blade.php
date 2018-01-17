@@ -7,11 +7,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-<<<<<<< HEAD
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
-=======
->>>>>>> 2b52e94... Freddie's flowers initial commit
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -19,7 +16,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<<<<<<< HEAD
 
     <div id="app">
         <nav class="navbar navbar-light">
@@ -51,7 +47,6 @@
         </nav>
 
 
-=======
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -108,19 +103,15 @@
                 </div>
             </div>
         </nav>
->>>>>>> 2b52e94... Freddie's flowers initial commit
 
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-<<<<<<< HEAD
     <script src="{{asset("https://code.jquery.com/jquery-3.2.1.slim.min.js")}}"></script>
     <script src="{{asset("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")}}"></script>
     <script src="{{asset("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js")}}"></script>
 
-=======
->>>>>>> 2b52e94... Freddie's flowers initial commit
 </body>
 </html>

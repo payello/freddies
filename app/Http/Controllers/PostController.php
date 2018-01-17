@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Auth;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -30,8 +31,6 @@ class PostController extends Controller
     {
         $this->middleware('auth')->except(['index', 'show']);
     }
-
-
 
     //show all the blog posts on page
     public function index()
@@ -69,9 +68,22 @@ class PostController extends Controller
     }
     public function edit($id)
     {
-        $post = Post::find($id);
+        if (Auth::user()->id == Post::find($id)->user->id)
+        {
 
-        return view('posts.edit', compact('post', 'id'));
+            $post = Post::find($id);
+
+            return view('posts.edit', compact('post', 'id'));
+
+        }
+
+        else
+
+        {
+
+            return redirect()->back()->withErrors('You can only edit your own posts');
+
+        }
     }
 
     public function update(Request $request, $id)
@@ -90,9 +102,12 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-        $post = Post::find($id);
+        if (Auth::user()->id == Post::find($id)->user->id)
+        {
+            $post = Post::find($id);
 
-        $post->delete();
+            $post->delete();
+        }
 
         return redirect('posts')->with('success', 'Your Post has been deleted');
     }
