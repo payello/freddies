@@ -8,7 +8,9 @@
         <p>{{$post->content}}</p>
     </div>
 
-    <div class="container">
+
+
+        <div class="container">
         <ul class="list-group">
             @foreach($post->comments as $comment)
                 <li class="list-group-item">
@@ -22,7 +24,11 @@
 
     </div>
 
-    @if(Auth::check())
+    {{--The user cannot leave comments on their own posts but can on others. If you're not logged in. You need to be!--}}
+
+    @if(Auth::id() == $post->user_id)
+        <p class="list-group-item alert alert-warning">You can't leave comments on your own posts!</p>
+    @elseif (Auth::check())
         <div class="card-block">
             <form method="POST" action="/posts/{{ $post-> id}}/comments">
                 {{csrf_field()}}
